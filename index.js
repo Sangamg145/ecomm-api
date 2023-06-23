@@ -2,7 +2,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const userRoute = require("./routes/user");
-const cors = require("cors")
+const bannerRoute = require("./routes/banner");
+const cors = require("cors");
+const productsRoute = require("./routes/products");
 const app = express();
 app.use(express.json());
 app.use(cors())
@@ -14,6 +16,8 @@ mongoose
   .catch((err) => console.log(err));
 
 app.use("/app/api", userRoute);
+app.use("/app/api", bannerRoute);
+app.use("/app/api", productsRoute);
 
 app.get("/", async (req, res) => {
     res.status(200).json("Server is running");
