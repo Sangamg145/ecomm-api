@@ -1,24 +1,26 @@
 const router = require("express").Router();
-const Banner = require("../models/banner");
+const Products = require("../models/products");
 
-router.get("/banner", async (req, res) => {
+router.get("/products", async (req, res) => {
   try {
-    const banner = await Banner.find();
+    const products = await Products.find();
     res
       .status(200)
-      .json({ success: "true", status_code: 200, message: "Ok", data: {banner} });
+      .json({ success: "true", status_code: 200, message: "Ok", data: products });
   } catch (error) {
     res.status(500).json(error);
+    console.log('first',error)
   }
 });
-router.post("/banner", async (req, res) => {
+router.post("/products", async (req, res) => {
   try {
-    const newBanner = new Banner({
-      name: req.body.name,
-      desc: req.body.desc,
-      img: req.body.img,
+    const newProducts = new Products({
+      category: [{name:req.body.category[0].name,desc: req.body.category[0].desc,
+        img: req.body.category[0].img,}],
+        items: [{name:req.body.items[0].name,desc: req.body.items[0].desc,
+            img: req.body.items[0].img,}]
     });
-    const saveUser = await newBanner.save();
+    const saveUser = await newProducts.save();
     res
       .status(201)
       .json({
