@@ -10,6 +10,9 @@
   "author": "",
   "license": "ISC",
   "description": "",
+  "engines": {
+    "node": ">=14.20.1"
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "crypto-js": "^4.1.1",
