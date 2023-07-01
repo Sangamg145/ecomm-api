@@ -54,7 +54,7 @@ router.post("/products", async (req, res) => {
 
 router.post("/product-list", async (req, res) => {
     try {
-      const newProductList = new Products({
+      const newProductList = new ProductList({
         name: req.body.name,
         desc: req.body.desc,
         img: req.body.img,
