@@ -17,7 +17,7 @@ router.post("/register", async (req, res) => {
       email: req.body.email,
     });
     const saveUser = await newUser.save();
-    res.status(201).json(saveUser);
+    res.status(201).json({success: "true", status_code: 200, message: "Ok",data:"User registered successfully."});
   } catch (error) {
     res.status(500).json(error);
   }
@@ -41,7 +41,7 @@ router.post("/login", async (req, res) => {
       { expiresIn: "3d" }
     );
     const { password, ...others } = user._doc;
-    res.status(200).json({ ...others, accessToken });
+    res.status(200).json({ ...others, accessToken,success: "true", status_code: 200, message: "Ok", });
   } catch (error) {
     res.status(500).json(error);
   }
