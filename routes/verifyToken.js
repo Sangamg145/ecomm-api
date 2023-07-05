@@ -10,7 +10,7 @@ const verifyToken = (req,res,next)=>{
             next()
         })
     } else {
-       return res.status(401).json("You are not authenticated!")
+       return res.status(401).json({success: "true", status_code: 401, message: "Ok",data:"You are not authenticated!"})
     }
 }
 module.exports = {verifyToken}
