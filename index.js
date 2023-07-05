@@ -5,6 +5,7 @@ const userRoute = require("./routes/user");
 const bannerRoute = require("./routes/banner");
 const cors = require("cors");
 const productsRoute = require("./routes/products");
+const cartRoute = require("./routes/cart");
 const app = express();
 app.use(express.json());
 app.use(cors())
@@ -18,6 +19,7 @@ mongoose
 app.use("/app/api", userRoute);
 app.use("/app/api", bannerRoute);
 app.use("/app/api", productsRoute);
+app.use("/app/api", cartRoute);
 
 app.get("/", async (req, res) => {
     res.status(200).json("Server is running");
