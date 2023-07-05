@@ -15,6 +15,21 @@ router.get("/products", async (req, res) => {
   }
 });
 
+router.get("/products/:id", async (req, res) => {
+    try {
+      const products = await Products.findById(req.params.id);
+      res.status(200)
+        .json({
+          success: "true",
+          status_code: 200,
+          message: "Ok",
+          data: products,
+        });
+    } catch (error) {
+      res.status(500).json(error);
+    }
+  });
+
 router.get("/product-list", async (req, res) => {
     try {
       const productList = await ProductList.find();
